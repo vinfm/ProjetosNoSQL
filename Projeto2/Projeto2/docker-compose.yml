@@ -1,0 +1,32 @@
+services:
+  redis:
+    image: redis:7.4-alpine
+    container_name: tpch_redis
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --save ""
+      --appendonly no
+      --maxmemory 7gb
+      --maxmemory-policy noeviction
+    volumes:
+      - ./redis_data:/data
+    mem_limit: 8g
+    memswap_limit: 8g
+    mem_swappiness: 0
+
+  cassandra:
+    image: cassandra:5.0
+    container_name: tpch_cassandra
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=tpch_cluster
+      - MAX_HEAP_SIZE=3G
+      - HEAP_NEWSIZE=768M
+    volumes:
+      - ./cassandra_data:/var/lib/cassandra
+      - ./cassandra.yaml:/etc/cassandra/cassandra.yaml
+    mem_limit: 6g
+    memswap_limit: 6g

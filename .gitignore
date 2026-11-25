@@ -1,0 +1,11 @@
+.venv
+venv
+*.zip
+tpch_nosql*
+cassandra_data
+dsbulk*
+redis_data
+redis_backups
+results*
+__pycache__
+exports
