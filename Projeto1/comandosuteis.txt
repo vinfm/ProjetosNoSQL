@@ -1,0 +1,25 @@
+sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+
+const exp = db.collection.explain("executionStats").aggregate(
+  [
+    /* seu pipeline aqui */
+  ],
+  { allowDiskUse: true }
+);
+
+// Imprime o tempo total
+print("Tempo (ms):", exp.executionStats ? exp.executionStats.executionTimeMillis : exp.stages);
+
+// Imprime a estrutura de estágios para verificar o usedDisk
+printjson(exp.stages || exp.executionStats);const exp = db.lineitem.explain("executionStats").aggregate(
+  [
+    /* seu pipeline aqui */
+  ],
+  { allowDiskUse: true }
+);
+
+// Imprime o tempo total
+print("Tempo (ms):", exp.executionStats ? exp.executionStats.executionTimeMillis : exp.stages);
+
+// Imprime a estrutura de estágios para verificar o usedDisk
+printjson(exp.stages || exp.executionStats);

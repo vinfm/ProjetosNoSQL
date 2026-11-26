@@ -1,0 +1,20 @@
+function rodarBenchmark(colecao, pipeline, opcoes = { allowDiskUse: true }) {
+  const t0 = Date.now();
+  const exp = db[colecao].explain("executionStats").aggregate(pipeline, opcoes);
+  const tempoTotalRealMs = Date.now() - t0;
+
+  const base = exp.stages ? exp.stages[0].$cursor : exp;
+  const stats = base.executionStats;
+  const plan = base.queryPlanner.winningPlan.queryPlan || base.queryPlanner.winningPlan;
+
+  printjson({
+    colecao: `tpch.${colecao}`,
+    tempo_execucao_total_ms: tempoTotalRealMs,
+    tempo_execucao_total_seg: Number((tempoTotalRealMs / 1000).toFixed(2)),
+    tempo_interno_cursor_ms: stats.executionTimeMillis,
+    docs_retornados: stats.nReturned,
+    docs_examinados: stats.totalDocsExamined,
+    chaves_indice_lidas: stats.totalKeysExamined,
+    plano_de_acesso: plan
+  }, { depth: null });
+}
