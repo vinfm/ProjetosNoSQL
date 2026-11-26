@@ -1,0 +1,263 @@
+{
+  "generated_at": "2026-11-26T02:08:55.524963+00:00",
+  "config": {
+    "queries": [
+      1,
+      2,
+      3
+    ],
+    "collections": null,
+    "rel_tol": 1e-09,
+    "abs_tol": 1e-06,
+    "strict": false,
+    "strip_strings": false,
+    "no_hint": false,
+    "timeout_ms": null,
+    "revalidate_mysql": false,
+    "mysql_only": false
+  },
+  "warnings": [
+    "3.mongodb (bloco 2): opções após o pipeline estão sem chaves '{ ... }'; interpretadas automaticamente."
+  ],
+  "summary": {
+    "total_checks": 6,
+    "passed_checks": 5,
+    "failed_checks": 1,
+    "all_passed": false
+  },
+  "checks": [
+    {
+      "check": "Q1 MongoDB (lineitems_flat, 1.mongodb#bloco1)",
+      "kind": "mongo_vs_ref",
+      "query_id": 1,
+      "collection": "lineitems_flat",
+      "block_index": 1,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 69.6024,
+      "row_count_actual": 4,
+      "row_count_expected": 4,
+      "max_abs_err": "0.0001",
+      "max_rel_err": "0.0005326452468666",
+      "max_err_field": "sum_disc_price",
+      "total_diffs": 0,
+      "diffs": []
+    },
+    {
+      "check": "Q1 MongoDB (lineitems_plus, 1.mongodb#bloco1)",
+      "kind": "mongo_vs_ref",
+      "query_id": 1,
+      "collection": "lineitems_plus",
+      "block_index": 1,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 76.0361,
+      "row_count_actual": 4,
+      "row_count_expected": 4,
+      "max_abs_err": "0.0001",
+      "max_rel_err": "0.0005326452468666",
+      "max_err_field": "sum_disc_price",
+      "total_diffs": 0,
+      "diffs": []
+    },
+    {
+      "check": "Q1 MongoDB (orders, 1.mongodb#bloco2)",
+      "kind": "mongo_vs_ref",
+      "query_id": 1,
+      "collection": "orders",
+      "block_index": 2,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 106.4682,
+      "row_count_actual": 4,
+      "row_count_expected": 4,
+      "max_abs_err": "0.0001",
+      "max_rel_err": "0.0005326452468666",
+      "max_err_field": "sum_disc_price",
+      "total_diffs": 0,
+      "diffs": []
+    },
+    {
+      "check": "Q2 MongoDB (parts, 2.mongodb#bloco1)",
+      "kind": "mongo_vs_ref",
+      "query_id": 2,
+      "collection": "parts",
+      "block_index": 1,
+      "passed": false,
+      "exact_match": false,
+      "elapsed_sec": 3.9053,
+      "row_count_actual": 100,
+      "row_count_expected": 100,
+      "max_abs_err": "0",
+      "max_rel_err": "0",
+      "max_err_field": null,
+      "total_diffs": 32,
+      "diffs": [
+        {
+          "type": "field_mismatch",
+          "row": 7,
+          "key": [
+            192388,
+            "Supplier#000067392"
+          ],
+          "field": "s_comment",
+          "expected": "nal pinto beans cajole quickly. final excuses about the deposits",
+          "actual": "nal pinto beans cajole quickly. final excuses about the deposits ",
+          "detail": "linha 7 (chave=(192388, 'Supplier#000067392')), campo 's_comment': esperado='nal pinto beans cajole quickly. final excuses about the deposits', obtido='nal pinto beans cajole quickly. final excuses about the deposits ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 9,
+          "key": [
+            691708,
+            "Supplier#000016715"
+          ],
+          "field": "s_comment",
+          "expected": "even requests; fluffily ironic",
+          "actual": " even requests; fluffily ironic ",
+          "detail": "linha 9 (chave=(691708, 'Supplier#000016715')), campo 's_comment': esperado='even requests; fluffily ironic', obtido=' even requests; fluffily ironic ' (diferença apenas em espaços nas extremidades (esquerda e direita))",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 10,
+          "key": [
+            1885430,
+            "Supplier#000085431"
+          ],
+          "field": "s_comment",
+          "expected": "boost furiously blithely quiet requests. ironic, ironic instructions haggle slowly. ironic, un",
+          "actual": " boost furiously blithely quiet requests. ironic, ironic instructions haggle slowly. ironic, un",
+          "detail": "linha 10 (chave=(1885430, 'Supplier#000085431')), campo 's_comment': esperado='boost furiously blithely quiet requests. ironic, ironic instructions haggle slowly. ironic, un', obtido=' boost furiously blithely quiet requests. ironic, ironic instructions haggle slowly. ironic, un' (diferença apenas em espaços à esquerda)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 19,
+          "key": [
+            494172,
+            "Supplier#000019177"
+          ],
+          "field": "s_comment",
+          "expected": "s wake furiously according to the depths. slyly express",
+          "actual": "s wake furiously according to the depths. slyly express ",
+          "detail": "linha 19 (chave=(494172, 'Supplier#000019177')), campo 's_comment': esperado='s wake furiously according to the depths. slyly express', obtido='s wake furiously according to the depths. slyly express ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 29,
+          "key": [
+            1234725,
+            "Supplier#000009762"
+          ],
+          "field": "s_comment",
+          "expected": "uriously unusual foxes. bold, ironic foxes according to the blithely final",
+          "actual": "uriously unusual foxes. bold, ironic foxes according to the blithely final ",
+          "detail": "linha 29 (chave=(1234725, 'Supplier#000009762')), campo 's_comment': esperado='uriously unusual foxes. bold, ironic foxes according to the blithely final', obtido='uriously unusual foxes. bold, ironic foxes according to the blithely final ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 30,
+          "key": [
+            568670,
+            "Supplier#000068671"
+          ],
+          "field": "s_comment",
+          "expected": "final foxes sleep carefully. final, ironic pinto beans after the special deposits h",
+          "actual": " final foxes sleep carefully. final, ironic pinto beans after the special deposits h",
+          "detail": "linha 30 (chave=(568670, 'Supplier#000068671')), campo 's_comment': esperado='final foxes sleep carefully. final, ironic pinto beans after the special deposits h', obtido=' final foxes sleep carefully. final, ironic pinto beans after the special deposits h' (diferença apenas em espaços à esquerda)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 32,
+          "key": [
+            1376445,
+            "Supplier#000051485"
+          ],
+          "field": "s_address",
+          "expected": "ZrSnSNxfvsD8KBgRrZzHKm,wrv2DtPf3",
+          "actual": "ZrSnSNxfvsD8KBgRrZzHKm,wrv2DtPf3 ",
+          "detail": "linha 32 (chave=(1376445, 'Supplier#000051485')), campo 's_address': esperado='ZrSnSNxfvsD8KBgRrZzHKm,wrv2DtPf3', obtido='ZrSnSNxfvsD8KBgRrZzHKm,wrv2DtPf3 ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 35,
+          "key": [
+            1341588,
+            "Supplier#000066602"
+          ],
+          "field": "s_comment",
+          "expected": "ideas are slyly final ideas. quickly ironic",
+          "actual": "ideas are slyly final ideas. quickly ironic ",
+          "detail": "linha 35 (chave=(1341588, 'Supplier#000066602')), campo 's_comment': esperado='ideas are slyly final ideas. quickly ironic', obtido='ideas are slyly final ideas. quickly ironic ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 36,
+          "key": [
+            1791550,
+            "Supplier#000066602"
+          ],
+          "field": "s_comment",
+          "expected": "ideas are slyly final ideas. quickly ironic",
+          "actual": "ideas are slyly final ideas. quickly ironic ",
+          "detail": "linha 36 (chave=(1791550, 'Supplier#000066602')), campo 's_comment': esperado='ideas are slyly final ideas. quickly ironic', obtido='ideas are slyly final ideas. quickly ironic ' (diferença apenas em espaços à direita)",
+          "whitespace_only": true
+        },
+        {
+          "type": "field_mismatch",
+          "row": 38,
+          "key": [
+            59433,
+            "Supplier#000059434"
+          ],
+          "field": "s_comment",
+          "expected": "regular foxes throughout the p",
+          "actual": " regular foxes throughout the p",
+          "detail": "linha 38 (chave=(59433, 'Supplier#000059434')), campo 's_comment': esperado='regular foxes throughout the p', obtido=' regular foxes throughout the p' (diferença apenas em espaços à esquerda)",
+          "whitespace_only": true
+        }
+      ]
+    },
+    {
+      "check": "Q3 MongoDB (orders, 3.mongodb#bloco1)",
+      "kind": "mongo_vs_ref",
+      "query_id": 3,
+      "collection": "orders",
+      "block_index": 1,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 12.8014,
+      "row_count_actual": 10,
+      "row_count_expected": 10,
+      "max_abs_err": "5E-11",
+      "max_rel_err": "1.155458711045593243661505868E-16",
+      "max_err_field": "revenue",
+      "total_diffs": 0,
+      "diffs": []
+    },
+    {
+      "check": "Q3 MongoDB (lineitems_plus, 3.mongodb#bloco2)",
+      "kind": "mongo_vs_ref",
+      "query_id": 3,
+      "collection": "lineitems_plus",
+      "block_index": 2,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 20.3444,
+      "row_count_actual": 10,
+      "row_count_expected": 10,
+      "max_abs_err": "5E-11",
+      "max_rel_err": "1.155458711045593243661505868E-16",
+      "max_err_field": "revenue",
+      "total_diffs": 0,
+      "diffs": []
+    }
+  ]
+}

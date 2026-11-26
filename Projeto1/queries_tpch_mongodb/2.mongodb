@@ -1,0 +1,56 @@
+// db.parts.aggregate([...])
+[
+  {
+    $match: {
+      size: 15,
+      "suppliers.region": "EUROPE",
+      type: { $regex: "BRASS$" }
+    }
+  },
+  {
+    $project: {
+      mfgr: 1,
+      eu_suppliers: {
+        $filter: {
+          input: "$suppliers",
+          as: "s",
+          cond: { $eq: ["$$s.region", "EUROPE"] }
+        }
+      }
+    }
+  },
+  {
+    $addFields: {
+      min_cost: { $min: "$eu_suppliers.supply_cost" }
+    }
+  },
+  { $unwind: "$eu_suppliers" },
+  {
+    $match: {
+      $expr: { $eq: ["$eu_suppliers.supply_cost", "$min_cost"] }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      s_acctbal: "$eu_suppliers.acctbal",
+      s_name: "$eu_suppliers.name",
+      n_name: "$eu_suppliers.nation",
+      p_partkey: "$_id",
+      p_mfgr: "$mfgr",
+      s_address: "$eu_suppliers.address",
+      s_phone: "$eu_suppliers.phone",
+      s_comment: "$eu_suppliers.comment"
+    }
+  },
+  {
+    $sort: {
+      s_acctbal: -1,
+      n_name: 1,
+      s_name: 1,
+      p_partkey: 1
+    }
+  },
+  { $limit: 100 }
+],
+{ allowDiskUse: true }

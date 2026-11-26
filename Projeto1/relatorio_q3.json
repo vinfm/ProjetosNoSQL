@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-11-26T02:03:33.674605+00:00",
+  "config": {
+    "queries": [
+      3
+    ],
+    "collections": [
+      "lineitems_plus"
+    ],
+    "rel_tol": 1e-09,
+    "abs_tol": 1e-06,
+    "strict": false,
+    "no_hint": false,
+    "timeout_ms": null,
+    "revalidate_mysql": false,
+    "mysql_only": false
+  },
+  "warnings": [
+    "3.mongodb (bloco 2): opções após o pipeline estão sem chaves '{ ... }'; interpretadas automaticamente."
+  ],
+  "summary": {
+    "total_checks": 1,
+    "passed_checks": 1,
+    "failed_checks": 0,
+    "all_passed": true
+  },
+  "checks": [
+    {
+      "check": "Q3 MongoDB (lineitems_plus, 3.mongodb#bloco2)",
+      "kind": "mongo_vs_ref",
+      "query_id": 3,
+      "collection": "lineitems_plus",
+      "block_index": 2,
+      "passed": true,
+      "exact_match": false,
+      "elapsed_sec": 23.0593,
+      "row_count_actual": 10,
+      "row_count_expected": 10,
+      "max_abs_err": "5E-11",
+      "max_rel_err": "1.155458711045593243661505868E-16",
+      "max_err_field": "revenue",
+      "total_diffs": 0,
+      "diffs": []
+    }
+  ]
+}

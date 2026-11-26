@@ -1,0 +1,126 @@
+// Para Opção 3: db.lineitems_flat.aggregate([...])
+// Para Opção 2: db.lineitems_plus.aggregate([...])
+[
+  {
+    $match: {
+      ship_date: { $lte: ISODate("1998-09-02T00:00:00Z") }
+    }
+  },
+  {
+    $group: {
+      _id: {
+        l_returnflag: "$return_flag",
+        l_linestatus: "$line_status"
+      },
+      sum_qty: { $sum: "$quantity" },
+      sum_base_price: { $sum: "$extended_price" },
+      sum_disc_price: {
+        $sum: {
+          $multiply: ["$extended_price", { $subtract: [1, "$discount"] }]
+        }
+      },
+      sum_charge: {
+        $sum: {
+          $multiply: [
+            "$extended_price",
+            { $subtract: [1, "$discount"] },
+            { $add: [1, "$tax"] }
+          ]
+        }
+      },
+      avg_qty: { $avg: "$quantity" },
+      avg_price: { $avg: "$extended_price" },
+      avg_disc: { $avg: "$discount" },
+      count_order: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      l_returnflag: "$_id.l_returnflag",
+      l_linestatus: "$_id.l_linestatus",
+      sum_qty: 1,
+      sum_base_price: 1,
+      sum_disc_price: 1,
+      sum_charge: 1,
+      avg_qty: 1,
+      avg_price: 1,
+      avg_disc: 1,
+      count_order: 1
+    }
+  },
+  {
+    $sort: {
+      l_returnflag: 1,
+      l_linestatus: 1
+    }
+  }
+],
+{ allowDiskUse: true, hint: { $natural: 1 } }
+
+// ============================================
+
+// db.orders.aggregate([...])
+[
+  {
+    $match: {
+      "line_items.ship_date": { $lte: ISODate("1998-09-02T00:00:00Z") }
+    }
+  },
+  { $unwind: "$line_items" },
+  {
+    $match: {
+      "line_items.ship_date": { $lte: ISODate("1998-09-02T00:00:00Z") }
+    }
+  },
+  {
+    $group: {
+      _id: {
+        l_returnflag: "$line_items.return_flag",
+        l_linestatus: "$line_items.line_status"
+      },
+      sum_qty: { $sum: "$line_items.quantity" },
+      sum_base_price: { $sum: "$line_items.extended_price" },
+      sum_disc_price: {
+        $sum: {
+          $multiply: ["$line_items.extended_price", { $subtract: [1, "$line_items.discount"] }]
+        }
+      },
+      sum_charge: {
+        $sum: {
+          $multiply: [
+            "$line_items.extended_price",
+            { $subtract: [1, "$line_items.discount"] },
+            { $add: [1, "$line_items.tax"] }
+          ]
+        }
+      },
+      avg_qty: { $avg: "$line_items.quantity" },
+      avg_price: { $avg: "$line_items.extended_price" },
+      avg_disc: { $avg: "$line_items.discount" },
+      count_order: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      l_returnflag: "$_id.l_returnflag",
+      l_linestatus: "$_id.l_linestatus",
+      sum_qty: 1,
+      sum_base_price: 1,
+      sum_disc_price: 1,
+      sum_charge: 1,
+      avg_qty: 1,
+      avg_price: 1,
+      avg_disc: 1,
+      count_order: 1
+    }
+  },
+  {
+    $sort: {
+      l_returnflag: 1,
+      l_linestatus: 1
+    }
+  }
+],
+{ allowDiskUse: true, hint: { $natural: 1 } } 

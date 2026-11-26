@@ -1,0 +1,30 @@
+services:
+  mongo1:
+    image: mongo:8.0
+    container_name: mongo1
+    network_mode: "host"
+    command: ["--replSet", "rs0", "--bind_ip", "localhost", "--port", "27021", "--wiredTigerCacheSizeGB", "2"]
+    volumes:
+      - /home/vinicius/mongodb_dados/mongo1:/data/db
+    mem_limit: 4g
+    memswap_limit: 4g
+
+  mongo2:
+    image: mongo:8.0
+    container_name: mongo2
+    network_mode: "host"
+    command: ["--replSet", "rs0", "--bind_ip", "localhost", "--port", "27022", "--wiredTigerCacheSizeGB", "2"]
+    volumes:
+      - /home/vinicius/mongodb_dados/mongo2:/data/db
+    mem_limit: 4g
+    memswap_limit: 4g
+
+  mongo3:
+    image: mongo:8.0
+    container_name: mongo3
+    network_mode: "host"
+    command: ["--replSet", "rs0", "--bind_ip", "localhost", "--port", "27023", "--wiredTigerCacheSizeGB", "2"]
+    volumes:
+      - /home/vinicius/mongodb_dados/mongo3:/data/db
+    mem_limit: 4g
+    memswap_limit: 4g

@@ -1,0 +1,50 @@
+[
+  {
+    "returnflag": "A",
+    "linestatus": "F",
+    "sum_qty": "377518399.00",
+    "sum_base_price": "566065727797.25",
+    "sum_disc_price": "537759104278.0656",
+    "sum_charge": "559276670892.116819",
+    "avg_qty": "25.5010",
+    "avg_price": "38237.1510",
+    "avg_disc": "0.0500",
+    "count_order": 14804077
+  },
+  {
+    "returnflag": "N",
+    "linestatus": "F",
+    "sum_qty": "9851614.00",
+    "sum_base_price": "14767438399.17",
+    "sum_disc_price": "14028805792.2114",
+    "sum_charge": "14590490998.366737",
+    "avg_qty": "25.5224",
+    "avg_price": "38257.8107",
+    "avg_disc": "0.0500",
+    "count_order": 385998
+  },
+  {
+    "returnflag": "N",
+    "linestatus": "O",
+    "sum_qty": "743124873.00",
+    "sum_base_price": "1114302286901.88",
+    "sum_disc_price": "1058580922144.9638",
+    "sum_charge": "1100937000170.591854",
+    "avg_qty": "25.4981",
+    "avg_price": "38233.9029",
+    "avg_disc": "0.0500",
+    "count_order": 29144351
+  },
+  {
+    "returnflag": "R",
+    "linestatus": "F",
+    "sum_qty": "377732830.00",
+    "sum_base_price": "566431054976.00",
+    "sum_disc_price": "538110922664.7677",
+    "sum_charge": "559634780885.086257",
+    "avg_qty": "25.5084",
+    "avg_price": "38251.2193",
+    "avg_disc": "0.0500",
+    "count_order": 14808183
+  }
+]
